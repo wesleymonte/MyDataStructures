@@ -1,6 +1,6 @@
-package bst;
+package binarySearchTree;
 
-import bt.BTNode;
+import binaryTree.BTNode;
 
 public class BSTNode<T extends Comparable<T>> extends BTNode<T> {
 

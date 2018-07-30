@@ -1,6 +1,6 @@
-package bst;
+package binarySearchTree;
 
-import bt.BT;
+import binaryTree.BT;
 
 public interface BST<T extends Comparable<T>> extends BT<T> {
 	

@@ -1,4 +1,4 @@
-package bt;
+package binaryTree;
 
 public class BTNode<T> {
 
@@ -24,29 +24,7 @@ public class BTNode<T> {
 	public boolean isLeaf() {
 		return this.data != null && this.left.isEmpty() && this.right.isEmpty();
 	}
-
-	@Override
-	public String toString() {
-		String str = "NIL";
-		if (!this.isEmpty()) {
-			str = this.data.toString();
-		}
-		return str;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public boolean equals(Object obj) {
-		boolean resp = false;
-		if (obj instanceof BTNode) {
-			if (!this.isEmpty() && !((BTNode<T>) obj).isEmpty()) {
-				resp = this.data.equals(((BTNode<T>) obj).data);
-			} else {
-				resp = this.isEmpty() && ((BTNode<T>) obj).isEmpty();
-			}
-		}
-		return resp;
-	}
+	
 
 	public T getData() {
 		return this.data;
@@ -79,4 +57,29 @@ public class BTNode<T> {
 	public void setParent(BTNode<T> parent) {
 		this.parent = parent;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean equals(Object obj) {
+		boolean resp = false;
+		if (obj instanceof BTNode) {
+			if (!this.isEmpty() && !((BTNode<T>) obj).isEmpty()) {
+				resp = this.data.equals(((BTNode<T>) obj).data);
+			} else {
+				resp = this.isEmpty() && ((BTNode<T>) obj).isEmpty();
+			}
+		}
+		return resp;
+	}
+	
+
+	@Override
+	public String toString() {
+		String str = "NIL";
+		if (!this.isEmpty()) {
+			str = this.data.toString();
+		}
+		return str;
+	}
+
 }

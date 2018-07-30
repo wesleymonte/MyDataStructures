@@ -1,7 +1,7 @@
-package bst;
+package binarySearchTree;
 
-import bst.BSTNode;
-import bt.BTNode;
+import binarySearchTree.BSTNode;
+import binaryTree.BTNode;
 
 public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 

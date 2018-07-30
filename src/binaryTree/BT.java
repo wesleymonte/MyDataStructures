@@ -1,4 +1,4 @@
-package bt;
+package binaryTree;
 
 public interface BT<T> {
 	
