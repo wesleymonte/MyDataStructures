@@ -1,6 +1,6 @@
 package singlyLinkedList;
 
-public class RecursiveSinglyLinkedList<T> implements LinkedList<T> {
+public class RecursiveSinglyLinkedList<T> implements SinglyLinkedList<T> {
 
 	protected T data;
 	protected RecursiveSinglyLinkedList<T> next;
