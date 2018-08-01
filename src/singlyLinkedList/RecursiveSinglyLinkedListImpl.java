@@ -1,16 +1,16 @@
 package singlyLinkedList;
 
-public class RecursiveSinglyLinkedList<T> implements SinglyLinkedList<T> {
+public class RecursiveSinglyLinkedListImpl<T> implements SinglyLinkedList<T> {
 
 	protected T data;
-	protected RecursiveSinglyLinkedList<T> next;
+	protected RecursiveSinglyLinkedListImpl<T> next;
 
-	public RecursiveSinglyLinkedList(T data, RecursiveSinglyLinkedList<T> next) {
+	public RecursiveSinglyLinkedListImpl(T data, RecursiveSinglyLinkedListImpl<T> next) {
 		this.data = data;
 		this.next = next;
 	}
 
-	public RecursiveSinglyLinkedList() {
+	public RecursiveSinglyLinkedListImpl() {
 
 	}
 
@@ -46,7 +46,7 @@ public class RecursiveSinglyLinkedList<T> implements SinglyLinkedList<T> {
 		if (element != null) {
 			if (this.isEmpty()) {
 				this.setData(element);
-				this.setNext(new RecursiveSinglyLinkedList<>());
+				this.setNext(new RecursiveSinglyLinkedListImpl<>());
 			} else {
 				this.getNext().insert(element);
 			}
@@ -90,11 +90,11 @@ public class RecursiveSinglyLinkedList<T> implements SinglyLinkedList<T> {
 		this.data = data;
 	}
 
-	public RecursiveSinglyLinkedList<T> getNext() {
+	public RecursiveSinglyLinkedListImpl<T> getNext() {
 		return next;
 	}
 
-	public void setNext(RecursiveSinglyLinkedList<T> next) {
+	public void setNext(RecursiveSinglyLinkedListImpl<T> next) {
 		this.next = next;
 	}
 

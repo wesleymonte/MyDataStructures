@@ -43,15 +43,17 @@ public class DoublyLinkedListImpl<T> extends SinglyLinkedListImpl<T> implements 
 		if(!this.isEmpty() && element != null) {
 			DoublyLinkedListNode<T> currentLeft = castToDoublyNode(head);
 			DoublyLinkedListNode<T> currentRight = last;
-			while(!currentLeft.equals(currentRight) && castToDoublyNode(currentLeft.getNext()).equals(currentRight) &&
+			while(!currentLeft.equals(currentRight) && !castToDoublyNode(currentLeft.getNext()).equals(currentRight) &&
 					!currentLeft.getData().equals(element) && !currentRight.getData().equals(element)) {
 				currentLeft = castToDoublyNode(currentLeft.getNext());
 				currentRight = last.getPrevious();
 			}
-			if(currentLeft.equals(element)) {
-				currentLeft = castToDoublyNode(currentLeft.getNext());
-			} else if(currentRight.equals(element)) {
-				currentRight = castToDoublyNode(currentRight.getNext());
+			if(currentLeft.getData().equals(element)) {
+				currentLeft.setData(currentLeft.getNext().getData());
+				currentLeft.setNext(currentLeft.getNext().getNext());
+			} else if(currentRight.getData().equals(element)) {
+				currentRight.setData(currentRight.getNext().getData());
+				currentRight.setNext(currentRight.getNext().getNext());
 			}
 		}
 	}
@@ -71,10 +73,12 @@ public class DoublyLinkedListImpl<T> extends SinglyLinkedListImpl<T> implements 
 	@Override
 	public void removeLast() {
 		if(!this.isEmpty()) {
-			if(castToDoublyNode(head).equals(last)) {
+			if(this.size() == 1) {
 				this.head = new DoublyLinkedListNode<T>();
 				this.last = castToDoublyNode(head);
 			} else {
+				this.last.getPrevious().setData(last.getData());
+				this.last.getPrevious().setNext(last.getNext());
 				this.last = last.getPrevious();
 			}
 		}
