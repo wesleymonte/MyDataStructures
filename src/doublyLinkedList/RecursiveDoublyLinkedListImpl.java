@@ -20,10 +20,10 @@ public class RecursiveDoublyLinkedListImpl<T> extends RecursiveSinglyLinkedListI
 	public void insert(T element) {
 		if (element != null) {
 			if (this.isEmpty()) {
-				this.setData(element);
-				this.setNext(new RecursiveDoublyLinkedListImpl<T>(null, null, this));
-				if (this.getPrevious() == null) {
-					this.setPrevious(new RecursiveDoublyLinkedListImpl<T>(null, this, null));
+				setData(element);
+				setNext(new RecursiveDoublyLinkedListImpl<T>(null, null, this));
+				if (getPrevious() == null) {
+					setPrevious(new RecursiveDoublyLinkedListImpl<T>(null, this, null));
 				}
 			} else {
 				castToDoubly(getNext()).insert(element);
@@ -37,8 +37,7 @@ public class RecursiveDoublyLinkedListImpl<T> extends RecursiveSinglyLinkedListI
 			if (this.isEmpty()) {
 				insert(element);
 			} else {
-				RecursiveDoublyLinkedListImpl<T> copy = new RecursiveDoublyLinkedListImpl<T>(getData(), this,
-						getNext());
+				RecursiveDoublyLinkedListImpl<T> copy = new RecursiveDoublyLinkedListImpl<T>(getData(), this, getNext());
 				setData(element);
 				castToDoubly(getNext()).setPrevious(copy);
 				setNext(copy);
@@ -49,14 +48,14 @@ public class RecursiveDoublyLinkedListImpl<T> extends RecursiveSinglyLinkedListI
 
 	@Override
 	public void remove(T element) {
-		if(element != null) {
-			if(!this.isEmpty()) {
-				if(!this.getData().equals(element)) {
+		if (element != null) {
+			if (!this.isEmpty()) {
+				if (!getData().equals(element)) {
 					castToDoubly(getNext()).remove(element);
-				} else if(element.equals(this.getData())) {
-					this.setData(this.getNext().getData());
-					this.setPrevious(castToDoubly(this.getNext()).getPrevious());
-					this.setNext(getNext().getNext());
+				} else if (element.equals(getData())) {
+					setData(getNext().getData());
+					setPrevious(castToDoubly(this.getNext()).getPrevious());
+					setNext(getNext().getNext());
 				}
 			}
 		}
@@ -65,14 +64,14 @@ public class RecursiveDoublyLinkedListImpl<T> extends RecursiveSinglyLinkedListI
 	@Override
 	public void removeFirst() {
 		if (!this.isEmpty()) {
-			if(this.getNext().isEmpty()) {
-				this.setData(null);
-				this.setNext(null);
-				this.setPrevious(null);
+			if (getNext().isEmpty()) {
+				setData(null);
+				setNext(null);
+				setPrevious(null);
 			} else {
-				this.setData(this.getNext().getData());
-				castToDoubly(this.getNext().getNext()).setPrevious(this);
-				this.setNext(getNext().getNext());
+				setData(getNext().getData());
+				castToDoubly(getNext().getNext()).setPrevious(this);
+				setNext(getNext().getNext());
 			}
 		}
 
@@ -80,18 +79,18 @@ public class RecursiveDoublyLinkedListImpl<T> extends RecursiveSinglyLinkedListI
 
 	@Override
 	public void removeLast() {
-		if(!this.isEmpty()) {
-			if(this.getNext().isEmpty()) {
-				if(this.getPrevious().isEmpty()) {
-					this.data = null;
-					this.setNext(null);
-					this.setPrevious(null);
+		if (!this.isEmpty()) {
+			if (this.getNext().isEmpty()) {
+				if (getPrevious().isEmpty()) {
+					setData(null);
+					setNext(null);
+					setPrevious(null);
 				} else {
-					this.setData(null);
-					this.setNext(null);
+					setData(null);
+					setNext(null);
 				}
 			} else {
-				castToDoubly(this.getNext()).removeLast();
+				castToDoubly(getNext()).removeLast();
 			}
 		}
 
