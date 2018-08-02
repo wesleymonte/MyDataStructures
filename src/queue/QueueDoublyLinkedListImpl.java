@@ -26,19 +26,21 @@ public class QueueDoublyLinkedListImpl<T> implements Queue<T> {
 	}
 
 	@Override
-	public void dequeue() throws QueueUnderflowException {
-		if(!isEmpty()) {
+	public T dequeue() throws QueueUnderflowException {
+		T rtn = head();
+		if(rtn != null) {
 			list.removeFirst();
 		} else {
 			throw new QueueUnderflowException();
 		}
+		return rtn;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public T head() {
 		T rtn = null;
-		if(list.size() > 0) {
+		if(!isEmpty()) {
 			rtn = ((SinglyLinkedListImpl<T>) list).getHead().getData();
 		}
 		return rtn;

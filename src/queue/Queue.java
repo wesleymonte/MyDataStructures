@@ -4,7 +4,7 @@ public interface Queue<T> {
 	
 	public void enqueue(T element) throws QueueOverflowException;
 	
-	public void dequeue() throws QueueUnderflowException;
+	public T dequeue() throws QueueUnderflowException;
 	
 	public T head();
 	
