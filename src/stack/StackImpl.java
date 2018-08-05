@@ -24,9 +24,11 @@ public class StackImpl<T> implements Stack<T> {
 
 	@Override
 	public T pop() throws StackUnderflowException {
-		T rtn = top();
-		if(rtn != null) {
-			array[top--] = null;
+		T rtn = null;
+		if(!isEmpty()) {
+			rtn = array[top];
+			array[top] = null;
+			top--;
 		} else {
 			throw new StackUnderflowException();
 		}

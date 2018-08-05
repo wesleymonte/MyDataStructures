@@ -3,6 +3,6 @@ package queue;
 public class QueueUnderflowException extends Exception {
 
 	public QueueUnderflowException() {
-		super("Empty Queue");
+		super("Queue is Empty");
 	}
 }

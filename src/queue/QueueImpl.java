@@ -3,60 +3,59 @@ package queue;
 public class QueueImpl<T> implements Queue<T> {
 
 	protected T[] array;
-	protected int tail;
+	protected int head;
+	protected int sz;		//current number of elements
 	
 	public QueueImpl(int size) {
 		array = (T[]) new Object[size];
-		tail = -1;
+		head = 0;
+		sz = 0;
 	}
 	
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
 		if(element != null) {
-			if(!isFull()) {
-				array[++tail] = element;
-			} else {
+			if(isFull()) {
 				throw new QueueOverflowException();
+			} else {
+				int i = (head + sz) % array.length;
+				array[i] = element;
+				sz++;
 			}
 		}
 	}
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
-		T rtn = head();
-		if(rtn != null) {
-			array[0] = null;
-			shiftLeft();
-			tail--;
-		} else {
+		T rtn = null;
+		if(isEmpty()) {
 			throw new QueueUnderflowException();
+		} else {
+			rtn = array[head];
+			array[head] = null;
+			head = (head + 1) % array.length;
+			sz--;
 		}
 		return rtn;
-	}
-	
-	private void shiftLeft() {
-		for(int i = 0; i < tail; i++) {
-			array[i] = array[i+1];
-		}
 	}
 
 	@Override
 	public T head() {
 		T rtn = null;
 		if(!isEmpty()) {
-			rtn = array[0];
+			rtn = array[head];
 		}
 		return rtn;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return tail == -1;
+		return sz == 0;
 	}
 
 	@Override
 	public boolean isFull() {
-		return tail == array.length - 1;
+		return sz == array.length;
 	}
 
 }

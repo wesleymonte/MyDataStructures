@@ -3,6 +3,6 @@ package queue;
 public class QueueOverflowException extends Exception {
 
 	public QueueOverflowException() {
-		super("Full queue");
+		super("Queue is Full");
 	}
 }
