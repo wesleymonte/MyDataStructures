@@ -1,9 +1,13 @@
-package queue;
+package queue.extended;
 
-public class TestQueue {
+import queue.QueueOverflowException;
+import queue.QueueUnderflowException;
+import queue.QueueUsingStack;
+
+public class testQueueWithRotate {
 
 	public static void main(String[] args) throws Exception {
-		QueueUsingStack<Integer> j = new QueueUsingStack<Integer>(4);
+		QueueWithRotate<Integer> j = new QueueWithRotateImpl<Integer>(4);
 
 		System.out.println("\nTestes Fila");
 
@@ -13,7 +17,7 @@ public class TestQueue {
 		System.out.print(!(j.isFull()) ? "." : "F");
 		System.out.print(!(j.isEmpty()) ? "." : "F");
 		System.out.print(j.head().equals(1) ? "." : "F");
-
+		
 		j.enqueue(1);
 		j.enqueue(2);
 		j.dequeue();
@@ -24,6 +28,10 @@ public class TestQueue {
 		System.out.print(j.isFull() ? "." : "F");
 		System.out.print(!j.isEmpty() ? "." : "F");
 		System.out.print(j.head().equals(1) ? "." : "F");
+		
+		j.rotate();
+		
+		System.out.print(j.head() == 2 ? "." : "F");
 
 		try {
 			j.enqueue(5);
@@ -34,7 +42,7 @@ public class TestQueue {
 
 		j.dequeue();
 
-		System.out.print(j.head().equals(2) ? "." : "F");
+		System.out.print(j.head().equals(3) ? "." : "F");
 		System.out.print(!j.isFull() ? "." : "F");
 		System.out.print(!j.isEmpty() ? "." : "F");
 
