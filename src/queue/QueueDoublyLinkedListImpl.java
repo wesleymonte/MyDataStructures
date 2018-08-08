@@ -2,7 +2,7 @@ package queue;
 
 import doublyLinkedList.DoublyLinkedList;
 import doublyLinkedList.DoublyLinkedListImpl;
-import singlyLinkedList.SinglyLinkedListImpl;
+import singlyLinkedList.iterative.SinglyLinkedListImpl;
 
 public class QueueDoublyLinkedListImpl<T> implements Queue<T> {
 	

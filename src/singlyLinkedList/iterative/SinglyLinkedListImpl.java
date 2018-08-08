@@ -1,4 +1,6 @@
-package singlyLinkedList;
+package singlyLinkedList.iterative;
+
+import singlyLinkedList.SinglyLinkedList;
 
 public class SinglyLinkedListImpl<T> implements SinglyLinkedList<T> {
 
@@ -56,7 +58,7 @@ public class SinglyLinkedListImpl<T> implements SinglyLinkedList<T> {
 		if (!this.isEmpty() && element != null) {
 			SinglyLinkedListNode<T> current = this.getHead();
 			while (!current.isNIL() && !current.getData().equals(element)) {
-				current = current.next;
+				current = current.getNext();
 			}
 			if (element.equals(current.getData())) {
 				current.setData(current.getNext().getData());

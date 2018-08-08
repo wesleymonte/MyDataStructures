@@ -1,6 +1,6 @@
 package doublyLinkedList;
 
-import singlyLinkedList.SinglyLinkedListImpl;
+import singlyLinkedList.iterative.SinglyLinkedListImpl;
 
 public class DoublyLinkedListImpl<T> extends SinglyLinkedListImpl<T> implements DoublyLinkedList<T> {
 

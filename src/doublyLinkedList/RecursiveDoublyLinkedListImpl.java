@@ -1,6 +1,6 @@
 package doublyLinkedList;
 
-import singlyLinkedList.RecursiveSinglyLinkedListImpl;
+import singlyLinkedList.recursive.RecursiveSinglyLinkedListImpl;
 
 public class RecursiveDoublyLinkedListImpl<T> extends RecursiveSinglyLinkedListImpl<T> implements DoublyLinkedList<T> {
 

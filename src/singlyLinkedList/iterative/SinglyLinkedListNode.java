@@ -1,4 +1,4 @@
-package singlyLinkedList;
+package singlyLinkedList.iterative;
 
 public class SinglyLinkedListNode<T> {
 

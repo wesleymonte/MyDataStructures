@@ -1,6 +1,6 @@
 package doublyLinkedList;
 
-import singlyLinkedList.SinglyLinkedListNode;
+import singlyLinkedList.iterative.SinglyLinkedListNode;
 
 public class DoublyLinkedListNode<T> extends SinglyLinkedListNode<T> {
 	protected DoublyLinkedListNode<T> previous;

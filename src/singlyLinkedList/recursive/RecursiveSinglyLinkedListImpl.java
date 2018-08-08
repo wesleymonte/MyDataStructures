@@ -1,4 +1,6 @@
-package singlyLinkedList;
+package singlyLinkedList.recursive;
+
+import singlyLinkedList.SinglyLinkedList;
 
 public class RecursiveSinglyLinkedListImpl<T> implements SinglyLinkedList<T> {
 
