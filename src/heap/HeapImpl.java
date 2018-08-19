@@ -103,24 +103,18 @@ public class HeapImpl<T extends Comparable<T>> implements Heap<T> {
 
 	@Override
 	public T[] heapsort(T[] array) {
-		T[] rtn = (T[]) new Comparable[array.length];
-		clear();
+		T[] heapSorted = (T[]) new Comparable[array.length];
+
+		Comparator<T> comparatorOriginal = this.comparator;
+		this.setComparator((o1, o2) -> o1.compareTo(o2));
 		buildHeap(array);
 
-		int i = 0;
-
-		if (isMaxHeap()) {
-			i = size() - 1;
-			while (!isEmpty()) {
-				rtn[i--] = extractRootElement();
-			}
-		} else {
-			while (!isEmpty()) {
-				rtn[i++] = extractRootElement();
-			}
+		for (int i = this.index; i >= 0; i--) {
+			heapSorted[i] = this.extractRootElement();
 		}
 
-		return rtn;
+		this.setComparator(comparatorOriginal);
+		return heapSorted;
 	}
 
 	@Override
@@ -139,22 +133,21 @@ public class HeapImpl<T extends Comparable<T>> implements Heap<T> {
 		return index + 1;
 	}
 
+	public Comparator<T> getComparator() {
+		return comparator;
+	}
+
+	public void setComparator(Comparator<T> comparator) {
+		this.comparator = comparator;
+	}
+
+	public T[] getHeap() {
+		return heap;
+	}
+
 	private void clear() {
 		this.heap = (T[]) new Comparable[heap.length];
 		index = -1;
-	}
-
-	private boolean isMaxHeap() {
-		boolean isMax = true;
-		int index = 0;
-
-		while (index < size() && isMax) {
-			if (heap[index].compareTo(rootElement()) > 0) {
-				isMax = false;
-			}
-			index++;
-		}
-		return isMax;
 	}
 
 }
